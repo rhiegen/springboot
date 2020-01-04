@@ -9,7 +9,7 @@
 		<version>2.2.2.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.first</groupId>
+	<groupId>com.first</groupId> 
 	<artifactId>first-springboot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>first-springboot</name>
