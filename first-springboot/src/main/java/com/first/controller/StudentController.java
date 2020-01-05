@@ -33,6 +33,8 @@ public class StudentController {
 		this.studentDAO = studentDAO;
 	}
 
+	/*Adding pageable
+	 * */
 	@GetMapping
 	public ResponseEntity<?> listAll(Pageable pageable) {
 		return new ResponseEntity<>(studentDAO.findAll(pageable), HttpStatus.OK);
@@ -47,6 +49,9 @@ public class StudentController {
 
 	}
 
+	/*
+	 * Adding variable validation
+	 * */
 	@PostMapping
 	@Transactional(rollbackFor = Exception.class)
 	public ResponseEntity<?> save(@Valid @RequestBody Student student) {
@@ -77,6 +82,8 @@ public class StudentController {
 		return new ResponseEntity<>(studentDAO.findByNameIgnoreCaseContaining(name), HttpStatus.OK);
 	}
 
+	/*Adding id verification for the student object
+	 * */
 	private void verifyIfStudentExists(Long id) {
 		Optional<Student> student = studentDAO.findById(id);
 		if (student.get() == null) {
