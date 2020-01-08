@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.first.exception.ApiRequestException;
 import com.first.model.Student;
 import com.first.repository.StudentRepository;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @RestController
 @RequestMapping("/student")
@@ -50,6 +51,7 @@ public class StudentController {
 		//it's unnecessary for the system to work, just curiosity
 		//System.out.println("xxxxx "+ userDetails); 
 		verifyIfStudentExists(id);
+		PasswordEncoderGenerator();
 		Optional<Student> student = studentDAO.findById(id);
 		return new ResponseEntity<>(student, HttpStatus.OK);
 
@@ -98,4 +100,14 @@ public class StudentController {
 		}
 	}
 
+	public void PasswordEncoderGenerator() {
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String hashedPassword = passwordEncoder.encode("admin");
+		System.out.println("admin  " + hashedPassword);
+		String hashedPassword2 = passwordEncoder.encode("user");
+		System.out.println("user   " + hashedPassword2);
+
+		
+		
+	}
 }

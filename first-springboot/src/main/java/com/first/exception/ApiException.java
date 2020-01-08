@@ -6,7 +6,8 @@ import org.springframework.http.HttpStatus;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-@AllArgsConstructor
+
+@AllArgsConstructor 
 @Getter
 public class ApiException {
 	private final String message;
